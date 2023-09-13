@@ -20,7 +20,8 @@ export default {
   auth: {
     strategies: {
       google: {
-        clientId: process.env.GOOGLE_CLIENT_ID,
+        clientId:
+          "390769254551-foqjmdv7h5i5g8gttt7if2r4r1ohdlu8.apps.googleusercontent.com",
         codeChallengeMethod: "",
         responseType: "token id_token",
       },
