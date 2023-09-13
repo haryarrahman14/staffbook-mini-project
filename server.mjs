@@ -3,7 +3,9 @@ const app = express();
 const http = require("http");
 const server = http.createServer(app);
 const axios = require("axios");
-const cors = require("cors"); // Menggunakan require untuk cors
+const cors = require("cors");
+
+const ssePort = process.env.SSE_PORT || 3001;
 
 app.use(cors());
 app.use(express.json());
@@ -62,7 +64,7 @@ fetchTradingData();
 
 setInterval(fetchTradingData, pollingInterval);
 
-server.listen(process.env.PORT || 3000, () => {
+server.listen(ssePort, () => {
   console.log("Server SSE berjalan");
 });
 
