@@ -2,15 +2,15 @@
   "version": 2,
   "builds": [
     {
-      "src": "nuxt.config.js",
+      "src": "nuxt.config.mjs",
       "use": "@nuxtjs/vercel-builder",
       "config": {
-        "serverMiddleware": ["~/server.js"]
+        "serverMiddleware": ["~/server.mjs"]
       }
     }
   ],
   "routes": [
-    { "src": "/api/sse", "dest": "server.js" },
+    { "src": "/api/sse", "dest": "server.mjs" },
     { "handle": "filesystem" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
