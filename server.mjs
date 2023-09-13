@@ -29,7 +29,6 @@ app.get("/sse", (req, res) => {
     clients.splice(clients.indexOf(client), 1);
   });
 
-  // Kirim data pertama kali saat klien terhubung
   client.write(`data: ${JSON.stringify(tradingData)}\n\n`);
 });
 
