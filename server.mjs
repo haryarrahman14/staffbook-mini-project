@@ -19,6 +19,11 @@ const clients = [];
 let tradingData = [];
 
 app.get("/sse", (req, res) => {
+  if (req.url == "/__webpack_hmr") {
+    res.type("text/event-stream");
+    return;
+  }
+
   res.setHeader("Content-Type", "text/event-stream");
   res.setHeader("Cache-Control", "no-cache");
 
