@@ -3,7 +3,7 @@ const app = express();
 const http = require("http");
 const server = http.createServer(app);
 const axios = require("axios");
-import cors from "cors";
+const cors = require("cors"); // Menggunakan require untuk cors
 
 app.use(cors());
 app.use(express.json());
@@ -26,7 +26,6 @@ app.get("/sse", (req, res) => {
     clients.splice(clients.indexOf(client), 1);
   });
   client.write(`data: ${JSON.stringify(tradingData)}\n\n`);
-  client.end();
 });
 
 const fetchTradingData = async () => {
