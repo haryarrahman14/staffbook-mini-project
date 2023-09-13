@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     createSSEConnection() {
-      const eventSource = new EventSource("http://localhost:3001/sse");
+      const eventSource = new EventSource("/api/sse");
 
       eventSource.addEventListener("message", (event) => {
         const newTradingData = JSON.parse(event.data);

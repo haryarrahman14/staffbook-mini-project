@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const http = require("http");
-// const server = http.createServer(app);
+const server = http.createServer(app);
 const axios = require("axios");
 import cors from "cors";
 
@@ -67,8 +67,8 @@ fetchTradingData();
 
 setInterval(fetchTradingData, pollingInterval);
 
-// server.listen(3001, () => {
-//   console.log("Server SSE berjalan di http://localhost:3001");
-// });
+server.listen(process.env.PORT || 3000, () => {
+  console.log("Server SSE berjalan");
+});
 
-module.exports = { path: "~/", handler: app };
+module.exports = { path: "/api", handler: app };
