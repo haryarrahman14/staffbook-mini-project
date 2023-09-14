@@ -12,6 +12,9 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
   res.header("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Content-Type", "text/event-stream");
+  res.setHeader("Connection", "keep-alive");
+  res.setHeader("Cache-Control", "no-cache");
   next();
 });
 
@@ -19,12 +22,6 @@ const clients = [];
 let tradingData = [];
 
 app.get("/sse", (req, res) => {
-  res.type("text/event-stream");
-  res.setHeader("Content-Type", "text/event-stream");
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Connection", "keep-alive");
-  res.setHeader("Cache-Control", "no-cache");
-
   const client = res;
   clients.push(client);
   client.on("close", () => {
