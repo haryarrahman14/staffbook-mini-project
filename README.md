@@ -1,4 +1,4 @@
-# hello-hary
+# Staffbook Mini Project
 
 ## Build Setup
 
