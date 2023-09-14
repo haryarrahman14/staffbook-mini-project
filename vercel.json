@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "nuxt.config.mjs",
+      "src": "nuxt.config.js",
       "use": "@nuxtjs/vercel-builder",
       "config": {
         "serverMiddleware": ["~/server.mjs"]
