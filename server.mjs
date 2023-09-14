@@ -9,8 +9,9 @@ app.use(cors());
 app.use(express.json());
 
 app.use((req, res, next) => {
+  res.setHeader("Content-Type", "text/event-stream");
+  res.setHeader("Cache-Control", "no-cache");
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Content-Type", "text/event-stream");
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
   res.header("Access-Control-Allow-Headers", "Content-Type");
   next();
@@ -19,8 +20,6 @@ app.use((req, res, next) => {
 const clients = [];
 let tradingData = [];
 app.get("/sse", (req, res) => {
-  res.setHeader("Content-Type", "text/event-stream");
-  res.setHeader("Cache-Control", "no-cache");
   const client = res;
   clients.push(client);
   client.on("close", () => {
