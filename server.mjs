@@ -17,19 +17,20 @@ app.use((req, res, next) => {
 
 const clients = [];
 let tradingData = [];
+
 app.get("/sse", (req, res) => {
-  res.writeHead(200, {
-    "Content-Type": "text/event-stream",
-    "Cache-Control": "no-cache",
-    "Content-Encoding": "none",
-    Connection: "keep-alive",
-    "Access-Control-Allow-Origin": "*",
-  });
+  res.type("text/event-stream");
+  res.setHeader("Content-Type", "text/event-stream");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Connection", "keep-alive");
+  res.setHeader("Cache-Control", "no-cache");
+
   const client = res;
   clients.push(client);
   client.on("close", () => {
     clients.splice(clients.indexOf(client), 1);
   });
+
   client.write(`data: ${JSON.stringify(tradingData)}\n\n`);
 });
 
