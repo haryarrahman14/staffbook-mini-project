@@ -13,9 +13,5 @@
     { "src": "/api/sse", "dest": "server.mjs" },
     { "handle": "filesystem" },
     { "src": "/(.*)", "dest": "/index.html" }
-  ],
-  "env": {
-    "NUXT_PORT": "3000",
-    "SSE_PORT": "3001"
-  }
+  ]
 }
